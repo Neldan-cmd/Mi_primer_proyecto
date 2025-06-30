@@ -1,3 +1,5 @@
+-------------------------------
+
 En esta práctica se realiza una prueba básica de control de versiones utilizando
  Git como herramienta de seguimiento de cambios y GitHub como plataforma de 
  alojamiento de repositorios remotos. El objetivo es familiarizarse con el flujo
@@ -7,3 +9,5 @@ En esta práctica se realiza una prueba básica de control de versiones utilizan
     Esta experiencia permite reforzar el entendimiento del ciclo de vida de los cambios 
     en un proyecto versionado y las buenas prácticas de trabajo colaborativo en entornos 
     reales de desarrollo.
+
+----------------------------
