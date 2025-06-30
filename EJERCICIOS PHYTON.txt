@@ -1,0 +1,98 @@
+import pandas as pd
+import numpy as np
+
+# Simular un DataFrame base para los ejercicios
+data = {
+    'ID': range(1, 11),
+    'Nombre': ['Ana', 'Luis', 'Carlos', 'Elena', 'Jorge', 'Lucía', 'Pedro', 'Sofía', 'Miguel', 'María'],
+    'Edad': [23, 35, 29, 40, 31, 27, 22, 36, 41, 25],
+    'Carrera': ['Sistemas', 'Contabilidad', 'Sistemas', 'Derecho', 'Sistemas', 'Contabilidad', 'Psicología', 'Derecho', 'Psicología', 'Sistemas'],
+    'Promedio': [14.5, 15.2, 13.7, 16.3, 14.9, 15.5, 12.8, 17.0, 13.0, 15.0],
+    'Ingreso': pd.to_datetime(['2021-01-10', '2020-03-15', '2022-07-22', '2019-05-05', '2021-08-13', '2020-09-01', '2022-01-20', '2019-11-30', '2022-12-05', '2021-06-18'])
+}
+df = pd.DataFrame(data)
+
+Ejercicios
+
+1. Filtrar estudiantes con promedio mayor a 15
+df[df['Promedio'] > 15]
+
+2. Agrupar por carrera y obtener promedio general
+df.groupby('Carrera')['Promedio'].mean()
+
+3. Agregar una columna “Estado” (Aprobado ≥14)
+df['Estado'] = np.where(df['Promedio'] >= 14, 'Aprobado', 'Desaprobado')
+
+4. Obtener la edad máxima por carrera
+df.groupby('Carrera')['Edad'].max()
+
+5. Mostrar los tres estudiantes con mayor promedio
+df.nlargest(3, 'Promedio')
+
+6. Contar cuántos estudiantes hay por carrera
+df['Carrera'].value_counts()
+
+7. Obtener estudiantes que ingresaron después del 2021
+df[df['Ingreso'].dt.year > 2021]
+
+8. Ordenar por promedio descendente y edad ascendente
+df.sort_values(by=['Promedio', 'Edad'], ascending=[False, True])
+
+9. Agrupar por carrera y contar cuántos aprobaron
+df[df['Estado'] == 'Aprobado'].groupby('Carrera').size()
+
+10. Agregar columna de año de ingreso
+df['AñoIngreso'] = df['Ingreso'].dt.year
+
+11. Reemplazar 'Sistemas' por 'Ing. Sistemas'
+df['Carrera'] = df['Carrera'].replace('Sistemas', 'Ing. Sistemas')
+
+12. Crear columna “Edad x Promedio”
+df['EdadPromedio'] = df['Edad'] * df['Promedio']
+
+13. Crear un DataFrame solo con Aprobados de Derecho
+df[(df['Carrera'] == 'Derecho') & (df['Estado'] == 'Aprobado')]
+
+14. Mostrar promedio general por año de ingreso
+df.groupby(df['Ingreso'].dt.year)['Promedio'].mean()
+
+15. Exportar a Excel los estudiantes de Psicología
+df[df['Carrera'] == 'Psicología'].to_excel('psicologia_aprobados.xlsx', index=False)
+
+16. Detectar duplicados en la columna Nombre
+df[df['Nombre'].duplicated(keep=False)]
+
+17. Eliminar la columna EdadPromedio
+df.drop(columns='EdadPromedio', inplace=True)
+
+18. Filtrar alumnos con nombres que empiezan con “M”
+df[df['Nombre'].str.startswith('M')]
+
+19. Promedio de edad por carrera para desaprobados
+df[df['Estado'] == 'Desaprobado'].groupby('Carrera')['Edad'].mean()
+
+20. Crear resumen estadístico por carrera
+df.groupby('Carrera')[['Edad', 'Promedio']].agg(['mean', 'min', 'max'])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
